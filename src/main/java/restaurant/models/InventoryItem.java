@@ -1,11 +1,11 @@
 package restaurant.models;
 
-public class Ingredient {
+public class InventoryItem {
     private String name;
     private int quantity;
     private int threshold;
 
-    public Ingredient(String name, int quantity, int threshold) {
+    public InventoryItem(String name, int quantity, int threshold) {
         this.name = name;
         this.quantity = quantity;
         this.threshold = threshold;

@@ -3,12 +3,14 @@ package restaurant.models;
 public class User {
     private String username;
     private String password;
-    private String role;
+    private Role role;
+    public enum Role {
+        STAFF, MANAGER
+    }
 
     public User(String username, String password, String role) {
         this.username = username;
         this.password = password;
-        this.role = role;
     }
 
     public String getUsername() {
@@ -27,11 +29,8 @@ public class User {
         this.password = password;
     }
 
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
+    public void setRole(Role role) {
         this.role = role;
     }
+
 }
