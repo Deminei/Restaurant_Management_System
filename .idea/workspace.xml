@@ -4,29 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="931a2aa1-2a04-4835-b86e-d56b75566d20" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/controllers/InventoryManagement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/controllers/MenuManagement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/controllers/OrderProcessing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/controllers/SalesReport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/controllers/TableManagement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/controllers/UserLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/models/Ingredient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/models/MenuItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/models/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/models/Table.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/models/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/utils/ConsoleColors.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/utils/PasswordHasher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/utils/menu.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/utils/users.txt" afterDir="false" />
+    <list default="true" id="931a2aa1-2a04-4835-b86e-d56b75566d20" name="Changes" comment="Added enum Role for user">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/models/Sales.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/restaurant/controllers/SalesReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/restaurant/controllers/SalesReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/restaurant/models/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/restaurant/models/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/restaurant/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/restaurant/models/User.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +25,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2QnKQK7cIHQPfAgABpM33vlRIEI" />
@@ -56,8 +45,9 @@
     "ASKED_ADD_EXTERNAL_FILES": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "mikal",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -95,6 +85,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.App" />
+        <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
   </component>
@@ -107,14 +99,69 @@
       <option name="presentableId" value="Default" />
       <updated>1685983890591</updated>
       <workItem from="1685983891651" duration="278000" />
-      <workItem from="1685984180218" duration="1944000" />
+      <workItem from="1685984180218" duration="11038000" />
     </task>
+    <task id="LOCAL-00001" summary="Added enum Role for user">
+      <created>1685988618072</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1685988618072</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="user">
+                    <value>
+                      <list>
+                        <option value="*" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Added enum Role for user" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added enum Role for user" />
   </component>
 </project>
