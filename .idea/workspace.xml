@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="931a2aa1-2a04-4835-b86e-d56b75566d20" name="Changes" comment="Added enum Role for user">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/models/Sales.java" afterDir="false" />
+    <list default="true" id="931a2aa1-2a04-4835-b86e-d56b75566d20" name="Changes" comment="OH boy! Added tidbits to Order and User models for better functionality of the newly fleshed out SalesReport.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/restaurant/controllers/SalesReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/restaurant/controllers/SalesReport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/restaurant/models/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/restaurant/models/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/restaurant/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/restaurant/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/restaurant/controllers/OrderProcessing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/restaurant/controllers/OrderProcessing.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,13 +20,29 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="master" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="mikal" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="305dd867-6662-4374-9d62-52605beaf687" />
+        <option name="url" value="https://github.com/Deminei/Restaurant_Management_System.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="ProjectId" id="2QnKQK7cIHQPfAgABpM33vlRIEI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -40,21 +52,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "mikal",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;mikal&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="restaurant.App" />
@@ -84,6 +96,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App" />
         <item itemvalue="Application.App" />
         <item itemvalue="Application.App" />
         <item itemvalue="Application.App" />
