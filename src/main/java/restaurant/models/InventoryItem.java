@@ -1,22 +1,22 @@
 package restaurant.models;
 
 public class InventoryItem {
-    private String name;
+    private String itemName;
     private int quantity;
     private int threshold;
 
-    public InventoryItem(String name, int quantity, int threshold) {
-        this.name = name;
+    public InventoryItem(String itemName, int quantity, int threshold) {
+        this.itemName = itemName;
         this.quantity = quantity;
         this.threshold = threshold;
     }
 
-    public String getName() {
-        return name;
+    public String getItemName() {
+        return itemName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setItemName(String name) {
+        this.itemName = name;
     }
 
     public int getQuantity() {
