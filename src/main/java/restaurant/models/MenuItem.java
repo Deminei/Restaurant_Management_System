@@ -56,4 +56,14 @@ public class MenuItem {
     public void setIngredients(List<String> ingredients) {
         this.ingredients = ingredients;
     }
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Name: ").append(name).append("\n");
+        sb.append("Description: ").append(description).append("\n");
+        sb.append("Preparation Time: ").append(preparationTime).append(" minutes").append("\n");
+        sb.append("Price: $").append(price).append("\n");
+        sb.append("Ingredients: ").append(ingredients).append("\n");
+        return sb.toString();
+    }
 }

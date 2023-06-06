@@ -8,9 +8,10 @@ public class User {
         STAFF, MANAGER
     }
 
-    public User(String username, String password, String role) {
+    public User(String username, String password, Role role) {
         this.username = username;
         this.password = password;
+        this.role = role;
     }
 
     public String getUsername() {
@@ -36,8 +37,10 @@ public class User {
     public Role getRole() {
         return role;
     }
+
     @Override
     public String toString() {
-        return "\nUser: " + getUsername() + ", Role: " + getRole();
+        return (getUsername() + ";" +getPassword() + ";" + getRole());
     }
+
 }
