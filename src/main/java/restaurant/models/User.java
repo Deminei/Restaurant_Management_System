@@ -45,5 +45,9 @@ public class User {
         return role;
     }
 
+    @Override
+    public String toString() {
+        return "\nUser: " + getUsername() + ", Role: " + getRole();
+    }
 
 }
