@@ -7,16 +7,26 @@ public class Order {
     private List<MenuItem> items;
     private double totalPrice;
     private String status;
+    private Table table;
 
-    public Order(int orderId, List<MenuItem> items, double totalPrice, String status) {
+    public Order(int orderId, List<MenuItem> items, double totalPrice, String status, Table table) {
         this.orderId = orderId;
         this.items = items;
         this.totalPrice = totalPrice;
         this.status = status;
+        this.table = table;
     }
 
     public int getOrderId() {
         return orderId;
+    }
+
+    public Table getTable() {
+        return table;
+    }
+
+    public void setTable(Table table) {
+        this.table = table;
     }
 
     public void setOrderId(int orderId) {
