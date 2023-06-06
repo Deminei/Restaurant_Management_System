@@ -1,1 +1,4 @@
 *Stores users credentials
+Ekdrobinski; elizaB3st; MANAGER
+Deminei; JAVAg0d; STAFF
+awesomecierra;
