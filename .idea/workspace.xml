@@ -5,28 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="931a2aa1-2a04-4835-b86e-d56b75566d20" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/controllers/InventoryManagement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/controllers/MenuManagement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/controllers/OrderProcessing.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/controllers/SalesReport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/controllers/TableManagement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/controllers/UserLogin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/models/Ingredient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/models/MenuItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/models/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/models/Table.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/models/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/utils/ConsoleColors.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/utils/PasswordHasher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/utils/menu.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/utils/users.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/restaurant/utils/menutestcsv.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/restaurant/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/restaurant/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/restaurant/controllers/InventoryManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/restaurant/controllers/InventoryManagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/restaurant/controllers/MenuManagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/restaurant/controllers/MenuManagement.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,6 +27,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2QnKQK7cIHQPfAgABpM33vlRIEI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -51,27 +38,46 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RunManager" selected="Application.MenuManagement">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="restaurant.App" />
       <module name="RestaurantManagementSystem" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="restaurant.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MenuManagement" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="restaurant.controllers.MenuManagement" />
+      <module name="RestaurantManagementSystem" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="restaurant.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -94,6 +100,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.MenuManagement" />
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
@@ -108,6 +115,8 @@
       <updated>1685983890591</updated>
       <workItem from="1685983891651" duration="278000" />
       <workItem from="1685984180218" duration="1944000" />
+      <workItem from="1685993828290" duration="13865000" />
+      <workItem from="1686028367169" duration="2284000" />
     </task>
     <servers />
   </component>
