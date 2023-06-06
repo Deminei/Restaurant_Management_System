@@ -1,5 +1,12 @@
 package restaurant.models;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
     private String username;
     private String password;
@@ -8,9 +15,10 @@ public class User {
         STAFF, MANAGER
     }
 
-    public User(String username, String password, String role) {
+    public User(String username, String password, Role role) {
         this.username = username;
         this.password = password;
+        this.role = role;
     }
 
     public String getUsername() {
@@ -36,4 +44,6 @@ public class User {
     public Role getRole() {
         return role;
     }
+
+
 }
