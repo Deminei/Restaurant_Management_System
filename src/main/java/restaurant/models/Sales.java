@@ -37,6 +37,15 @@ public class Sales {
     public void setTablesWithMostOrders(List<Integer> tablesWithMostOrders) {
         this.tablesWithMostOrders = tablesWithMostOrders;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Total Revenue: $").append(totalRevenue).append("\n");
+        sb.append("Popular Items: ").append(popularItems).append("\n");
+        sb.append("Tables with Most Orders: ").append(tablesWithMostOrders).append("\n");
+        return sb.toString();
+    }
 }
 
 
