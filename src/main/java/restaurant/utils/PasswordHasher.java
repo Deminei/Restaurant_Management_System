@@ -27,6 +27,7 @@ public class PasswordHasher {
             }
 
             System.out.println(sb);
+//            System.out.println(sb.toString());
             return sb.toString();
 
         } catch (NoSuchAlgorithmException nsae) {

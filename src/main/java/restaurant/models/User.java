@@ -1,12 +1,5 @@
 package restaurant.models;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 public class User {
     private String username;
     private String password;
@@ -47,7 +40,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "\nUser: " + getUsername() + ", Role: " + getRole();
+        return (getUsername() + ";" +getPassword() + ";" + getRole());
     }
 
 }
