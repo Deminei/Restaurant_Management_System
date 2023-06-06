@@ -33,4 +33,11 @@ public class User {
         this.role = role;
     }
 
+    public Role getRole() {
+        return role;
+    }
+    @Override
+    public String toString() {
+        return "\nUser: " + getUsername() + ", Role: " + getRole();
+    }
 }
