@@ -1,4 +1,3 @@
-*Stores users credentials
-Ekdrobinski; elizaB3st; MANAGER
-Deminei; JAVAg0d; STAFF
-awesomecierra;
+awesomecierra;b57450d9daec5f293969e7b5c1f4c3972e88da984c1b507e72629e26705585fa;STAFF
+Deminei;6a225d4309f7fe4e1da84ee287d1fb138ebdb140ebc54ac03e66267970432c5e;STAFF
+Ekdrobinski;dab256fd9fac37bac4eea68b707a59923f478ab5b520c2632d0486479dcd0603;MANAGER

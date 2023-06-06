@@ -1,11 +1,15 @@
 package restaurant.controllers;
 
 import restaurant.models.User;
+import restaurant.utils.PasswordHasher;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static restaurant.models.User.Role.*;
+import static restaurant.utils.PasswordHasher.hashPassword;
 
 public class UserLogin {
     //Add methods and hashing algorithms
@@ -30,6 +34,8 @@ public class UserLogin {
                         staffOptions();
                     }else if(userData[0].equals(employeeUserName) && userData[1].equals(employeePassword) && userData[2].equals("MANAGER")){
                         managerOptions();
+                    }else{
+                        System.out.println("User not found. Please try again.");
                     }
                 }
             }
@@ -41,11 +47,17 @@ public class UserLogin {
     }
 
 //  Creates method that writes username and passwords to uses.txt
-    public static void storeUserData(User user){
+    public static void storeUserData(){
         String filepath = "src/main/java/restaurant/utils/users.txt";
-        List<User> employeeList = new ArrayList<>();
+        List<User> users = new ArrayList<>();
+        User Cierra = new User("awesomecierra", hashPassword("awesomeSAUCE"), STAFF);
+        User Mikhal = new User("Deminei",hashPassword("JAVAg0d"),STAFF);
+        User Elizabeth = new User("Ekdrobinski",hashPassword("elizaB3st"), MANAGER);
 
 
+        users.add(Cierra);
+        users.add(Mikhal);
+        users.add(Elizabeth);
 
         try{
             File outputFile = new File(filepath);
@@ -55,9 +67,15 @@ public class UserLogin {
                 System.out.println("File already exists. File will be updated.");
             }
 
-            BufferedWriter writeUserData = new BufferedWriter(new FileWriter(filepath)){
+            BufferedWriter writeUserData = new BufferedWriter(new FileWriter(filepath));
+            for( User user : users){
+                writeUserData.write(user.toString());
+                writeUserData.newLine();
+            }
 
-            };
+            writeUserData.close();
+            System.out.println("File has been updated.");
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -130,6 +148,10 @@ public class UserLogin {
             }
         }
 
+    }
+    public static void main(String[] args){
+        storeUserData();
+        findUser();
 
     }
 }
