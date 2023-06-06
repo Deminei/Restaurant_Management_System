@@ -1,21 +1,20 @@
 package restaurant.controllers;
 
 import restaurant.models.User;
-import restaurant.utils.PasswordHasher;
-
 import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static restaurant.models.User.Role.*;
-import static restaurant.utils.PasswordHasher.hashPassword;
-
 public class UserLogin {
-    //Add methods and hashing algorithms
+    public static void main(String[] args) {
+        findUser();
+    }
 
-//  Creates method that reads users.txt file checking for username and password matches.
-    public static void findUser(){
+    public static void findUser() {
         System.out.println("Enter username: ");
         Scanner scanner = new Scanner(System.in);
         String employeeUserName = scanner.nextLine();
@@ -25,19 +24,26 @@ public class UserLogin {
 
         String filepath = "src/main/java/restaurant/utils/users.txt";
 
-        try(BufferedReader reader = new BufferedReader(new FileReader(filepath))){
+        try (BufferedReader reader = new BufferedReader(new FileReader(filepath))) {
             String line;
-            while((line = reader.readLine()) != null){
-                if(line.contains(employeeUserName)){
-                    String [] userData = line.split(";");
-                    if (userData[0].equals(employeeUserName) && userData[1].equals(employeePassword) && userData[2].equals("STAFF")){
-                        staffOptions();
-                    }else if(userData[0].equals(employeeUserName) && userData[1].equals(employeePassword) && userData[2].equals("MANAGER")){
-                        managerOptions();
-                    }else{
-                        System.out.println("User not found. Please try again.");
+            boolean foundUser = false;
+            while ((line = reader.readLine()) != null) {
+                String[] userData = line.split(";");
+                if (userData.length >= 3 && userData[0].equals(employeeUserName)) {
+                    String storedHashedPassword = userData[1];
+                    if (validatePassword(employeePassword, storedHashedPassword)) {
+                        foundUser = true;
+                        if (userData[2].equals("STAFF")) {
+                            staffOptions();
+                        } else if (userData[2].equals("MANAGER")) {
+                            managerOptions();
+                        }
                     }
+                    break; // Added to exit the loop after finding a matching user
                 }
+            }
+            if (!foundUser) {
+                System.out.println("Invalid username or password.");
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
@@ -46,46 +52,127 @@ public class UserLogin {
         }
     }
 
-//  Creates method that writes username and passwords to uses.txt
-    public static void storeUserData(){
+    private static boolean validatePassword(String password, String storedHashedPassword) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            md.update(password.getBytes(StandardCharsets.UTF_8));
+            byte[] hashedPassword = md.digest();
+
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashedPassword) {
+                sb.append(String.format("%02x", b));
+            }
+
+            return sb.toString().equals(storedHashedPassword);
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void storeUserData(User user) {
         String filepath = "src/main/java/restaurant/utils/users.txt";
-        List<User> users = new ArrayList<>();
-        User Cierra = new User("awesomecierra", hashPassword("awesomeSAUCE"), STAFF);
-        User Mikhal = new User("Deminei",hashPassword("JAVAg0d"),STAFF);
-        User Elizabeth = new User("Ekdrobinski",hashPassword("elizaB3st"), MANAGER);
+        List<User> employeeList = new ArrayList<>();
 
-
-        users.add(Cierra);
-        users.add(Mikhal);
-        users.add(Elizabeth);
-
-        try{
+        try {
             File outputFile = new File(filepath);
-            if (outputFile.createNewFile()){
+            if (outputFile.createNewFile()) {
                 System.out.println("File created: " + outputFile.getName());
             } else {
                 System.out.println("File already exists. File will be updated.");
             }
 
-            BufferedWriter writeUserData = new BufferedWriter(new FileWriter(filepath));
-            for( User user : users){
-                writeUserData.write(user.toString());
-                writeUserData.newLine();
-            }
+            BufferedWriter writeUserData = new BufferedWriter(new FileWriter(filepath, true));
 
+            // Hash the password
+            String hashedPassword = hashPassword(user.getPassword());
+
+            // Write the hashed user data to the file
+            writeUserData.write(user.getUsername() + ";" + hashedPassword + ";" + user.getRole());
+            writeUserData.newLine();
             writeUserData.close();
-            System.out.println("File has been updated.");
-
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static void staffOptions(){
+    private static String hashPassword(String password) {
+        try {
+            MessageDigest md = MessageDigest.getInstance("SHA-256");
+            byte[] hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
+
+            StringBuilder sb = new StringBuilder();
+            for (byte b : hashedPassword) {
+                sb.append(String.format("%02x", b));
+            }
+
+            return sb.toString();
+        } catch (NoSuchAlgorithmException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static void backupUsersFile() {
+        String sourceFile = "src/main/java/restaurant/utils/users.txt";
+        String backupFile = "src/main/java/restaurant/utils/users_backup.txt";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(sourceFile));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(backupFile))) {
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                writer.write(line);
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static void replacePasswordsWithHashed() {
+        String sourceFile = "src/main/java/restaurant/utils/users.txt";
+        String tempFile = "src/main/java/restaurant/utils/users_temp.txt";
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(sourceFile));
+             BufferedWriter writer = new BufferedWriter(new FileWriter(tempFile))) {
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] userData = line.split(";");
+                if (userData.length >= 3) {
+                    String username = userData[0];
+                    String password = userData[1];
+                    String role = userData[2];
+
+                    // Hash the password
+                    String hashedPassword = hashPassword(password);
+
+                    // Write the hashed user data to the temporary file
+                    writer.write(username + ";" + hashedPassword + ";" + role);
+                } else {
+                    // Write the line as it is if it doesn't contain username, password, and role
+                    writer.write(line);
+                }
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Replace the original users.txt file with the temporary file
+        File source = new File(sourceFile);
+        File temp = new File(tempFile);
+        if (source.exists()) {
+            source.delete();
+            temp.renameTo(source);
+        }
+    }
+
+    public static void staffOptions() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
+        TableManagement tableManagement = new TableManagement();
 
-        while(running) {
+        while (running) {
             System.out.println("Enter 1 to assign guest to a table.");
             System.out.println("Enter 2 to access to place guest order.");
             System.out.println("Press 3 to edit restaurant inventory.");
@@ -93,15 +180,16 @@ public class UserLogin {
 
             int optionSelected = Integer.valueOf(scanner.nextLine());
 
-            switch(optionSelected){
+            switch (optionSelected) {
                 case 1:
-//                  Call table manager function
+                    // Call table manager function
+                    assignGuestToTable(tableManagement);
                     break;
                 case 2:
-//                  Call Order function
+                    // Call Order function
                     break;
                 case 3:
-//                  Restaurant inventory function?
+                    // Restaurant inventory function?
                     break;
                 default:
                     System.out.println("Logging out. Goodbye.");
@@ -109,14 +197,15 @@ public class UserLogin {
                     break;
             }
         }
-
     }
 
-    public static void managerOptions(){
+    public static void managerOptions() {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
+        // Instantiate the TableManager class
+        TableManagement tableManagement = new TableManagement();
 
-        while(running) {
+        while (running) {
             System.out.println("Enter 1 to assign guest to a table.");
             System.out.println("Enter 2 to access to place guest order.");
             System.out.println("Press 3 to edit restaurant inventory.");
@@ -126,32 +215,35 @@ public class UserLogin {
 
             int optionSelected = Integer.valueOf(scanner.nextLine());
 
-            switch(optionSelected){
+            switch (optionSelected) {
                 case 1:
-//                  Call table manager function
+                    assignGuestToTable(tableManagement);
                     break;
                 case 2:
-//                  Call Order function
+                    // Call Order function
                     break;
                 case 3:
-//                  Restaurant inventory function?
+                    // Restaurant inventory function?
                     break;
                 case 4:
-//                  edit menu function
+                    // Edit menu function
                     break;
                 case 5:
-//                generate sales report
+                    // Generate sales report
+                    break;
                 default:
                     System.out.println("Logging out. Goodbye.");
                     running = false;
                     break;
             }
         }
-
     }
-    public static void main(String[] args){
-        storeUserData();
-        findUser();
+    public static void assignGuestToTable(TableManagement tableManagement) {
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Enter the party size: ");
+        int partySize = Integer.parseInt(scanner.nextLine());
+
+        tableManagement.assignGuestToTable(partySize);
     }
 }

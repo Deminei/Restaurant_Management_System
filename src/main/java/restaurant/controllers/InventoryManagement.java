@@ -20,17 +20,29 @@ public class InventoryManagement {
         InventoryItem item = new InventoryItem(itemName, quantity, threshold);
         listOfIngredients.add(item);
     }
+
     // public void useIngredient(InventoryItem item){
     //     listOfIngredients.stream().filter(item -> item.equals(item)).forEach(System.out::println);
 
     // }
 
+//    public void useIngredient(InventoryItem item){
+//        listOfIngredients.stream().filter(item -> item.equals(item)).forEach(System.out::println);
+//
+//    }
+
     //    public void ingredientsList(){
     //    InventoryItem CA = new InventoryItem("Coffee Abomination", 25, 50);
     //    InventoryItem OML = new InventoryItem("Oat Milk Latte", 25,50);
+
 
     //    if (InventoryItem.getThreshold >= 2){
     //        System.out.println("Alert--- Only 2 left in inventory");
     //    }
 //    }
+//       if (InventoryItem.getThreshold >= 2){
+//           System.out.println("Alert--- Only 2 left in inventory");
+//       }
+   }
+
 }
