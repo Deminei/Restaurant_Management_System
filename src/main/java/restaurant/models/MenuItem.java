@@ -1,5 +1,6 @@
 package restaurant.models;
 
+import java.util.Collections;
 import java.util.List;
 
 public class MenuItem {
@@ -9,12 +10,12 @@ public class MenuItem {
     private double price;
     private List<String> ingredients;
 
-    public MenuItem(String name, String description, int preparationTime, double price, List<String> ingredients) {
+    public MenuItem(String name, String description, int preparationTime, double price, String ingredients) {
         this.name = name;
         this.description = description;
         this.preparationTime = preparationTime;
         this.price = price;
-        this.ingredients = ingredients;
+        this.ingredients = Collections.singletonList(ingredients);
     }
 
     public String getName() {
