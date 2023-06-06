@@ -8,7 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.IOException;
+import java.util.Scanner;
 import restaurant.models.MenuItem;
 import java.util.Arrays;
 
@@ -20,7 +20,7 @@ public class MenuManagement {
     private static File file = new File("../utils/menutestcsv.csv");
 
 
-    public static List<String[]> fileReader(){
+    public List<String[]> fileReader(){
         try {
             FileReader outputReader = new FileReader(file);
             CSVReader reader = new CSVReader(outputReader);
@@ -31,7 +31,7 @@ public class MenuManagement {
         }
         return menuData;
     }
-    public static void fileWriter() {
+    public void fileWriter() {
         try {
             FileWriter outputFile = new FileWriter(file);
             CSVWriter writer = new CSVWriter(outputFile, '|', CSVWriter.NO_QUOTE_CHARACTER,CSVWriter.DEFAULT_ESCAPE_CHARACTER,CSVWriter.DEFAULT_LINE_END);
@@ -41,7 +41,7 @@ public class MenuManagement {
             e.printStackTrace();
         }
     }
-    public static void main(String[] args){
+    public void main(String[] args){
         fileReader();
     }
 
@@ -54,7 +54,48 @@ public class MenuManagement {
     fileWriter();
    }
    public void edit(MenuItem item){
-
+    boolean running = true;
+    while(running){
+        int option = prompt("Pick from the list of options below", new String[]{
+            "update the item's name",
+            "update the item's description",
+            "update the item's preparation time",
+            "update the item's price",
+            "Update the item's ingredients"
+    });
+ 
+    switch(option){
+        case 1: 
+        item.setName(prompt("What's the new name?"));
+        break;
+        case 2: item.setDescription(prompt("What would you like the new description to say?"));
+        break;
+        case 3: item.setPreparationTime(Integer.parseInt((prompt("What is the new preparation time?"))));
+        break;
+        case 4: item.setPrice(Double.parseDouble((prompt("What is the new price? EX:0.00"))));
+        break;
+        case 5: item.setIngredients(Arrays.asList(prompt("What are the new ingredients?").split("|")));
+        break;
+        default:
+        System.out.println("Logging out. Goodbye!");
+        running = false;
+        break;
+    }
+    }
    }
-
+public int prompt(String question, String[] options){
+    System.out.println(question);
+    for(int i = 0; i < options.length; i++){
+        System.out.println(i + ": " + options[i]);
+    }
+    String input = prompt("");
+    int parsedInput = Integer.parseInt(input);
+    return parsedInput;
+}
+public String prompt(String question){
+    System.out.println(question);
+    Scanner scanner = new Scanner(System.in);
+    String input = scanner.nextLine();
+    return input;
+}
 }
