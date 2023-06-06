@@ -17,10 +17,10 @@ public class MenuManagement {
     //Add methods to manage menu items in menu.txt
     //Implement File I/O to load and save menu items
     private static List<String[]> menuData = new ArrayList<String[]>();
-    private static File file = new File("../utils/menutestcsv.csv");
+    private static File file = new File("./menutestcsv.csv");
 
 
-    public List<String[]> fileReader(){
+    public static List<String[]> fileReader(){
         try {
             FileReader outputReader = new FileReader(file);
             CSVReader reader = new CSVReader(outputReader);
@@ -31,7 +31,7 @@ public class MenuManagement {
         }
         return menuData;
     }
-    public void fileWriter() {
+    public static void fileWriter() {
         try {
             FileWriter outputFile = new FileWriter(file);
             CSVWriter writer = new CSVWriter(outputFile, '|', CSVWriter.NO_QUOTE_CHARACTER,CSVWriter.DEFAULT_ESCAPE_CHARACTER,CSVWriter.DEFAULT_LINE_END);
@@ -41,16 +41,17 @@ public class MenuManagement {
             e.printStackTrace();
         }
     }
-    public void main(String[] args){
+    public static void main(String[] args){
         fileReader();
+        fileWriter();
     }
 
     public void add(MenuItem item){
-        menuData.add((new String[] {item.getName(), item.getDescription() , String.valueOf(item.getPreparationTime()),String.valueOf(item.getPrice()), item.getIngredients().toString() }));
+        menuData.add((new String[] {item.getName(), item.getDescription() , String.valueOf(item.getPreparationTime()), Double.toString(item.getPrice()), item.getIngredients().toString()}));
         fileWriter();
     }
    public void delete(MenuItem item){
-    menuData.remove((new String[] {item.getName(), item.getDescription() , String.valueOf(item.getPreparationTime()),String.valueOf(item.getPrice()), item.getIngredients().toString() }));
+    menuData.remove((new String[] {item.getName(), item.getDescription() , String.valueOf(item.getPreparationTime()),String.valueOf(item.getPrice()), item.getIngredients().toString()}));
     fileWriter();
    }
    public void edit(MenuItem item){

@@ -32,5 +32,5 @@ public class InventoryManagement {
     //    if (InventoryItem.getThreshold >= 2){
     //        System.out.println("Alert--- Only 2 left in inventory");
     //    }
-   }
+//    }
 }
