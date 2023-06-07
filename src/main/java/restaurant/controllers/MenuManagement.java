@@ -20,7 +20,7 @@ public class MenuManagement {
     private static File file = new File("./menutestcsv.csv");
 
 
-    public static List<String[]> fileReader(){
+    public List<String[]> fileReader(){
         try {
             FileReader outputReader = new FileReader(file);
             CSVReader reader = new CSVReader(outputReader);
@@ -31,7 +31,7 @@ public class MenuManagement {
         }
         return menuData;
     }
-    public static void fileWriter() {
+    public void fileWriter() {
         try {
             FileWriter outputFile = new FileWriter(file);
             CSVWriter writer = new CSVWriter(outputFile, '|', CSVWriter.NO_QUOTE_CHARACTER,CSVWriter.DEFAULT_ESCAPE_CHARACTER,CSVWriter.DEFAULT_LINE_END);
