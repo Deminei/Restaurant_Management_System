@@ -1,5 +1,7 @@
 package restaurant.controllers;
 
+import restaurant.models.MenuItem;
+import restaurant.models.Order;
 import restaurant.models.User;
 import restaurant.utils.PasswordHasher;
 
@@ -85,6 +87,11 @@ public class UserLogin {
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
 
+        TableManagement tableManagement = new TableManagement();
+        OrderProcessing orderProcessing = new OrderProcessing();
+        InventoryManagement inventoryManagement = new InventoryManagement();
+
+
         while(running) {
             System.out.println("Enter 1 to assign guest to a table.");
             System.out.println("Enter 2 to access to place guest order.");
@@ -98,10 +105,13 @@ public class UserLogin {
 //                  Call table manager function
                     break;
                 case 2:
-//                  Call Order function
+                    // Call Order function
+                    placeGuestOrder(orderProcessing);
                     break;
                 case 3:
-//                  Restaurant inventory function?
+                    // Restaurant inventory function?
+                    manageInventory(inventoryManagement);
+
                     break;
                 default:
                     System.out.println("Logging out. Goodbye.");
@@ -115,6 +125,13 @@ public class UserLogin {
     public static void managerOptions(){
         Scanner scanner = new Scanner(System.in);
         boolean running = true;
+
+        // Instantiate the TableManager class
+        TableManagement tableManagement = new TableManagement();
+        OrderProcessing orderProcessing = new OrderProcessing();
+        InventoryManagement inventoryManagement = new InventoryManagement();
+        MenuManagement menuManagement = new MenuManagement();
+
 
         while(running) {
             System.out.println("Enter 1 to assign guest to a table.");
@@ -131,16 +148,23 @@ public class UserLogin {
 //                  Call table manager function
                     break;
                 case 2:
-//                  Call Order function
+
+                    // Call Order function
+                    placeGuestOrder(orderProcessing);
                     break;
                 case 3:
-//                  Restaurant inventory function?
+                    // Restaurant inventory function?
+                    manageInventory(inventoryManagement);
                     break;
                 case 4:
-//                  edit menu function
+                    // Edit menu function
+                    manageMenu(menuManagement);
                     break;
                 case 5:
-//                generate sales report
+                    // Generate sales report
+
+                    break;
+
                 default:
                     System.out.println("Logging out. Goodbye.");
                     running = false;
@@ -154,4 +178,72 @@ public class UserLogin {
         findUser();
 
     }
+
+    public static void placeGuestOrder(OrderProcessing orderProcessing){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter order number: ");
+        int orderID =  Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Enter items being ordered: ");
+
+    }
+
+    public static void manageInventory(InventoryManagement inventoryManagement){
+
+    }
+
+    public static void manageMenu(MenuManagement menuManagement){
+
+        menuManagement.fileReader();
+
+        boolean menuAction = true;
+        while(menuAction){
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("What would you like to do with the menu?");
+            System.out.println("Enter 1 to add item.");
+            System.out.println("Enter 2 to delete item.");
+            System.out.println("Enter 3 to edit item.");
+            System.out.println("Enter 0 to exit.");
+
+            int doToMenu = Integer.parseInt(scanner.nextLine());
+
+            System.out.println("Enter name of the item: ");
+            String itemName = scanner.nextLine();
+
+            System.out.println("Enter description of the item: ");
+            String itemDescription = scanner.nextLine();
+
+            System.out.println("Enter prep time of the item: ");
+            int itemPrepTime = Integer.valueOf(scanner.nextLine());
+
+            System.out.println("Enter price of the item: ");
+            Double itemPrice = Double.valueOf(scanner.nextLine());
+
+            System.out.println("Enter ingredients of the item: ");
+            String itemIngredients = scanner.nextLine();
+
+            MenuItem menuItem = new MenuItem(itemName, itemDescription, itemPrepTime, itemPrice, itemIngredients);
+
+            switch (doToMenu){
+                case 1:
+                    menuManagement.add(menuItem);
+                    break;
+                case 2:
+                    menuManagement.delete(menuItem);
+                    break;
+                case 3:
+                    menuManagement.edit(menuItem);
+                    break;
+                default:
+                    System.out.println("Exiting menu management. Goodbye.");
+                    menuAction = false;
+                    break;
+
+            }
+
+        }
+
+    }
+
 }
