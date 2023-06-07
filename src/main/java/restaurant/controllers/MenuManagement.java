@@ -41,10 +41,6 @@ public class MenuManagement {
             e.printStackTrace();
         }
     }
-    public static void main(String[] args){
-        fileReader();
-        fileWriter();
-    }
 
     public void add(MenuItem item){
         menuData.add((new String[] {item.getName(), item.getDescription() , String.valueOf(item.getPreparationTime()), Double.toString(item.getPrice()), item.getIngredients().toString()}));
@@ -99,4 +95,10 @@ public String prompt(String question){
     String input = scanner.nextLine();
     return input;
 }
+
+            // menuData.add(new MenuItem("Coffee Abomination", "Delicious tonic water, coffee beverage with a shot of espresso",3, 8.00, Arrays.asList("Tonic water", "Cherry syrup", "Espresso")));
+            // menuData.add(new MenuItem("Oat Milk Latte", "Shots of espresso served over ice with oat milk", 2, 5.00, Arrays.asList("Espresso", "Oat milk", "Ice")));
+            // menuData.add(new MenuItem("Almond Milk Latte", "Shots of espresso served over ice with almond milk",2, 5.00, Arrays.asList("Espresso", "Almond milk", "Ice")));
+
 }
+

@@ -9,7 +9,6 @@ public class InventoryManagement {
     //Methods to maintain list of ingredients as well as
     // track ingredient usage, update quantities, and generate
     // alerts for low inventory
-    //Also implements File I/O to load/save ingredient data from file
     List<InventoryItem> listOfIngredients = new ArrayList<>();
 
     public void addIngredient(InventoryItem item){
@@ -20,29 +19,18 @@ public class InventoryManagement {
         InventoryItem item = new InventoryItem(itemName, quantity, threshold);
         listOfIngredients.add(item);
     }
+    public void useIngredient(String ingredientName){
+        listOfIngredients.stream().filter(ingredient -> ingredient.getItemName() == ingredientName).forEach(ingredient -> {
+            ingredient.setQuantity(ingredient.getQuantity() - 1); 
+            if (ingredient.getQuantity() <= ingredient.getThreshold()){
+                System.out.println("Alert--- Only " + ingredient.getQuantity() +" left in inventory");
+            }
+        });
 
-    // public void useIngredient(InventoryItem item){
-    //     listOfIngredients.stream().filter(item -> item.equals(item)).forEach(System.out::println);
+    }
 
-    // }
-
-//    public void useIngredient(InventoryItem item){
-//        listOfIngredients.stream().filter(item -> item.equals(item)).forEach(System.out::println);
-//
-//    }
-
-    //    public void ingredientsList(){
-    //    InventoryItem CA = new InventoryItem("Coffee Abomination", 25, 50);
-    //    InventoryItem OML = new InventoryItem("Oat Milk Latte", 25,50);
-
-
-    //    if (InventoryItem.getThreshold >= 2){
-    //        System.out.println("Alert--- Only 2 left in inventory");
-    //    }
-//    }
-//       if (InventoryItem.getThreshold >= 2){
-//           System.out.println("Alert--- Only 2 left in inventory");
-//       }
+       public void ingredientsList(){
+       InventoryItem CA = new InventoryItem("Coffee Abomination", 25, 5);
+       InventoryItem OML = new InventoryItem("Oat Milk Latte", 25,5);
    }
-
 }
