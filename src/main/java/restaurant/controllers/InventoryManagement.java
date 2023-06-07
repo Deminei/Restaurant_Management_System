@@ -6,14 +6,13 @@ import restaurant.models.InventoryItem;
 
 public class InventoryManagement {
 
-    //Methods to maintain list of ingredients as well as
-    // track ingredient usage, update quantities, and generate
-    // alerts for low inventory
     List<InventoryItem> listOfIngredients = new ArrayList<>();
 
+    //will add it to the listOfIn if the item is already made
     public void addIngredient(InventoryItem item){
         listOfIngredients.add(item);
     }
+    //will make the inventory item from the peremater
     public void addIngredient(String itemName, int quantity, int threshold){
         InventoryItem item = new InventoryItem(itemName, quantity, threshold);
         listOfIngredients.add(item);
@@ -25,13 +24,23 @@ public class InventoryManagement {
                 System.out.println("Alert--- Only " + ingredient.getQuantity() +" left in inventory");
             }
         });
-
     }
-    //check inventory to verify all items & a function to get a certain ingredient using the name to fi
+    public void checkInventory(){
+        for (int i = 0; i < listOfIngredients.size(); i++) {
+            System.out.println(listOfIngredients.get(i).getItemName() + ": " + listOfIngredients.get(i).getQuantity() );
+        }
+    }
+    public void getIngredients(String ingredientName){
+        listOfIngredients.stream().filter(ingredient -> ingredient.getItemName() == ingredientName).forEach(ingredient -> System.out.println(ingredient.getItemName() + ": " + ingredient.getQuantity()));
+    }
 
-    
-
-    //    InventoryItem CA = new InventoryItem("Coffee Abomination", 25, 5);
-    //    InventoryItem OML = new InventoryItem("Oat Milk Latte", 25,5);
+    //    addIngredient("8oz Coffee Abomination", 50, 5);
+    //    addIngredient("8oz Oat Milk Latte", 50,5);
+    //    addIngredient("8oz Almond Milk Latte", 50,5);
+    //    addIngredient("8oz Skim Milk Latte", 50,3);
+    //    addIngredient("Oatmeal", 35,4);
+    //    addIngredient("Bacon BreakFast Sandwich", 30,2);
+    //    addIngredient("Turkey Sandwich", 30,2);
+    //    addIngredient("Ham Sandwich", 30,2);
    
 }

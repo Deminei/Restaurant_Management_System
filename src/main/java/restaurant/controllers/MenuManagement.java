@@ -96,9 +96,13 @@ public String prompt(String question){
     return input;
 }
 
-            // menuData.add(new MenuItem("Coffee Abomination", "Delicious tonic water, coffee beverage with a shot of espresso",3, 8.00, Arrays.asList("Tonic water", "Cherry syrup", "Espresso")));
-            // menuData.add(new MenuItem("Oat Milk Latte", "Shots of espresso served over ice with oat milk", 2, 5.00, Arrays.asList("Espresso", "Oat milk", "Ice")));
-            // menuData.add(new MenuItem("Almond Milk Latte", "Shots of espresso served over ice with almond milk",2, 5.00, Arrays.asList("Espresso", "Almond milk", "Ice")));
+            // menuData.add(new MenuItem("8oz Coffee Abomination", "Delicious tonic water, coffee beverage with a shot of espresso",3, 8.00, Arrays.asList("Tonic water", "Cherry syrup", "Espresso")));
+            // menuData.add(new MenuItem("8oz Oat Milk Latte", "Shots of espresso served over ice with oat milk", 2, 6.00, Arrays.asList("Espresso", "Oat milk", "Ice")));
+            // menuData.add(new MenuItem("8oz Almond Milk Latte", "Shots of espresso served over ice with almond milk",2, 6.00, Arrays.asList("Espresso", "Almond milk", "Ice")));
+            // menuData.add(new MenuItem("Oatmeal", "Heathly Oatmeal topped with blueberries, honey, and brown sugar",5, 5.00, Arrays.asList("Oatmeal Package", "Blueberry Package", "Honey Package", "Brown Sugar Package")));
+            // menuData.add(new MenuItem("Bacon BreakFast Sandwich", "Amazing bacon breakFast sandwich with egg, cheese on english muffin",8, 8.00, Arrays.asList("Bacon", "Egg", "Cheese", "English Muffin")));
+            // menuData.add(new MenuItem("Turkey Sandwich", "Delicious turkey sandwich with cheese, lettuce on whole wheat",8, 10.00, Arrays.asList("Turkey", "Cheese", "Lettuce", "Whole Wheat")));
+            // menuData.add(new MenuItem("Ham Sandwich", "Yummy ham sandwich served with lettuce, mayonnaise, cheese on whole wheat",3, 10.00, Arrays.asList("Ham","Lettuce", "Mayonnaise", "Cheese", "Whole Wheat")));
 
 }
 
