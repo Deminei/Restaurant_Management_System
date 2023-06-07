@@ -14,7 +14,6 @@ public class InventoryManagement {
     public void addIngredient(InventoryItem item){
         listOfIngredients.add(item);
     }
-
     public void addIngredient(String itemName, int quantity, int threshold){
         InventoryItem item = new InventoryItem(itemName, quantity, threshold);
         listOfIngredients.add(item);
@@ -28,9 +27,10 @@ public class InventoryManagement {
         });
 
     }
+    //check inventory to verify all items & a function to get a certain ingredient using the name to fi
 
-       public void ingredientsList(){
-       InventoryItem CA = new InventoryItem("Coffee Abomination", 25, 5);
-       InventoryItem OML = new InventoryItem("Oat Milk Latte", 25,5);
-   }
+
+    //    InventoryItem CA = new InventoryItem("Coffee Abomination", 25, 5);
+    //    InventoryItem OML = new InventoryItem("Oat Milk Latte", 25,5);
+   
 }
