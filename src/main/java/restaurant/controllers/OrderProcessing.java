@@ -12,11 +12,15 @@ public class OrderProcessing {
     private final List<Order> activeOrders;
     private Map<Integer, String> orderStatus;
     private ExecutorService executorService;
+    private InventoryManagement inventoryManagement;
+    private SalesReport salesReport;
 
     public OrderProcessing() {
         activeOrders = new ArrayList<>();
         orderStatus = new HashMap<>();
         executorService = Executors.newFixedThreadPool(5); // Set the number of threads as desired
+        inventoryManagement = new InventoryManagement();
+        salesReport = new SalesReport();
     }
     public void createOrder(Order order) {
         activeOrders.add(order);
@@ -52,15 +56,13 @@ public class OrderProcessing {
         // Update order status to "Ready" when processing is complete
         updateOrderStatus(order.getOrderId(), "Order is ready!");
 
-        // ?? additional tasks after order processing is complete
+        // Additional tasks after order processing is complete
+        generateSalesReport();
+        updateInventory(order);
+        notifyStaff(order);
     }
     public void updateOrderStatus(int orderId, String newStatus) {
-        for (Order order : activeOrders) {
-            if (order.getOrderId() == orderId) {
-                order.setStatus(newStatus);
-                break;
-            }
-        }
+        orderStatus.put(orderId, newStatus);
     }
     public double calculateTotalPrice(int orderId) {
         for (Order order : activeOrders) {
@@ -74,34 +76,43 @@ public class OrderProcessing {
         }
         return 0.0; // Order not found
     }
-    public List<Order> getOrdersByStatus(String status) {
-        List<Order> ordersByStatus = new ArrayList<>();
-        for (Order order : activeOrders) {
-            if (order.getStatus().equals(status)) {
-                ordersByStatus.add(order);
-            }
-        }
-        return ordersByStatus;
+    private void generateSalesReport() {
+        List<Order> completedOrders = getCompletedOrders();
+        salesReport.generateDailySalesReport(completedOrders);
     }
-    public Order getOrderById(int orderId) {
-        for (Order order : activeOrders) {
-            if (order.getOrderId() == orderId) {
-                return order;
-            }
+    private void updateInventory(Order order) {
+        // Implement the logic to update the inventory based on the items in the order
+        List<MenuItem> items = order.getItems();
+        for (MenuItem item : items) {
+            inventoryManagement.useIngredient(item.getName());
         }
-        return null; // Order not found
     }
-    public void removeOrder(int orderId) {
-        Order orderToRemove = null;
-        for (Order order : activeOrders) {
-            if (order.getOrderId() == orderId) {
-                orderToRemove = order;
-                break;
+    private List<Table> getTables() {
+        // Implement this method to retrieve the list of tables from TableManagement
+        TableManagement tableManagement = new TableManagement();
+        return tableManagement.getTables();
+    }
+
+    private void notifyStaff(Order order) {
+        List<MenuItem> items = order.getItems();
+        for (MenuItem item : items) {
+            List<String> ingredients = item.getIngredients();
+            for (String ingredient : ingredients) {
+                InventoryItem inventoryItem = inventoryManagement.getIngredient(ingredient);
+                if (inventoryItem.getQuantity() <= inventoryItem.getThreshold()) {
+                    System.out.println("Alert: Low quantity for ingredient " + ingredient);
+                }
             }
         }
-        if (orderToRemove != null) {
-            activeOrders.remove(orderToRemove);
+    }
+    private List<Order> getCompletedOrders() {
+        List<Order> completedOrders = new ArrayList<>();
+        for (Order order : activeOrders) {
+            if (orderStatus.getOrDefault(order.getOrderId(), "").equals("Order is ready!")) {
+                completedOrders.add(order);
+            }
         }
+        return completedOrders;
     }
     public void clearAllOrders() {
         activeOrders.clear();

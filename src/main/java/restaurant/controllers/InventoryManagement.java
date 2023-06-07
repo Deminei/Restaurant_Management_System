@@ -30,9 +30,20 @@ public class InventoryManagement {
             System.out.println(listOfIngredients.get(i).getItemName() + ": " + listOfIngredients.get(i).getQuantity() );
         }
     }
-    public void getIngredients(String ingredientName){
-        listOfIngredients.stream().filter(ingredient -> ingredient.getItemName() == ingredientName).forEach(ingredient -> System.out.println(ingredient.getItemName() + ": " + ingredient.getQuantity()));
+    public void getIngredients(String ingredientName) {
+        boolean ingredientFound = false;
+        for (InventoryItem ingredient : listOfIngredients) {
+            if (ingredient.getItemName().equals(ingredientName)) {
+                System.out.println(ingredient.getItemName() + ": " + ingredient.getQuantity());
+                ingredientFound = true;
+                break;
+            }
+        }
+        if (!ingredientFound) {
+            System.out.println("Ingredient '" + ingredientName + "' not found.");
+        }
     }
+
 
     //    addIngredient("8oz Coffee Abomination", 50, 5);
     //    addIngredient("8oz Oat Milk Latte", 50,5);
